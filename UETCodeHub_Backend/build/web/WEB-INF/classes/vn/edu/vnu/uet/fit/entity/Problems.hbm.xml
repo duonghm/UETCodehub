@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 11, 2016 1:11:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="vn.edu.vnu.uet.fit.entity.Problems" table="problems" catalog="uetcodehub">
+        <id name="problemId" type="java.lang.Integer">
+            <column name="problemId" />
+            <generator class="identity"></generator>
+        </id>
+        <many-to-one name="user" class="vn.edu.vnu.uet.fit.entity.Users" fetch="select">
+            <column name="userId" />
+        </many-to-one>
+        <property name="content" type="string">
+            <column name="content" length="65535" />
+        </property>
+        <property name="timelimit" type="java.lang.Float">
+            <column name="timelimit" precision="12" scale="0" />
+        </property>
+        <property name="defaultScore" type="java.lang.Integer">
+            <column name="defaultScore" />
+        </property>
+        <property name="tagValues" type="string">
+            <column name="tagValues" length="65535" />
+        </property>
+        <property name="isActive" type="boolean">
+            <column name="isActive" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

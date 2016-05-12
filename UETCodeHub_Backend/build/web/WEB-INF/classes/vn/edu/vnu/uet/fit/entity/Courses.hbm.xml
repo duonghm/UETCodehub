@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 11, 2016 1:11:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="vn.edu.vnu.uet.fit.entity.Courses" table="courses" catalog="uetcodehub">
+        <id name="courseId" type="java.lang.Integer">
+            <column name="courseId" />
+            <generator class="identity"></generator>
+        </id>
+        <property name="courseName" type="string">
+            <column name="courseName" length="200" not-null="true" />
+        </property>        
+        <many-to-one name="createdUser" class="vn.edu.vnu.uet.fit.entity.Users">
+            <column name="createdUserId"/>
+        </many-to-one>
+        <many-to-one name="semester" class="vn.edu.vnu.uet.fit.entity.Semesters" fetch="select">
+            <column name="semesterId" />
+        </many-to-one>
+        <property name="description" type="string">
+            <column name="description" length="200" />
+        </property>
+        <property name="isActive" type="boolean">
+            <column name="isActive" not-null="true" />
+        </property>
+        <set name="problems" table="Courseproblems" cascade="save-update" lazy="true">
+            <key column="courseId"/>                
+            <many-to-many column="problemId" class="vn.edu.vnu.uet.fit.entity.Problems"/>
+        </set>
+        <!--        <set name="members" table="Courseusers">
+            <key column="courseId"/>                
+            <many-to-many column="userId" class="vn.edu.vnu.uet.fit.entity.Users"/>
+        </set>-->
+        
+    </class>
+</hibernate-mapping>

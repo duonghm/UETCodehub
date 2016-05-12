@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition>
+            <p:dialog widgetVar="wgCreate" modal="true" resizable="false" header="Create New Exercise">
+                <h:form id="frmCreate">
+                    <p:messages id="msg" showDetail="true" showSummary="false"/>
+                    <p:panelGrid id="pnlCreate" columns="2">                        
+                        <p:outputLabel for="txtContent" value="Content"/>
+                        <p:editor id="txtContent" value="#{courseProblemsBean.obj.problem.content}"/>
+
+                        <p:outputLabel for="txtTimeLimit" value="Time limit(s)"/>
+                        <p:inputText id="txtTimeLimit" value="#{courseProblemsBean.obj.problem.timelimit}"/>
+
+                        <p:outputLabel for="txtDefaultScore" value="Score" />
+                        <p:inputText id="txtDefaultScore" value="#{courseProblemsBean.obj.scoreInCourse}"/>
+
+                        <p:outputLabel for="txtTagValues" value="Tag Value" />
+                        <p:inputText id="txtTagValues" value="#{courseProblemsBean.obj.problem.tagValues}"/>
+
+                        <p:outputLabel for="txtHardLevel" value="Hard Level"/>
+                        <p:inputText id="txtHardLevel" value="#{courseProblemsBean.obj.hardLevel}"/>
+                        
+                        <!--Footer Button-->
+                        <f:facet name="footer">
+                            <!--<p:commandButton value="Add" update=":frm:tbl, :frmCreate:msg, :frm:msg" />-->
+                            <p:commandButton value="Add" actionListener="#{courseProblemsBean.create}" update=":tabs:frm:tbl, :tabs:frmCreate:msg, :tabs:frm:msg"/>
+                            <p:commandButton value="Cancel" onclick="PF('wgCreate').hide()"/>
+                        </f:facet>
+                    </p:panelGrid>
+                </h:form>
+            </p:dialog>
+        </ui:composition>
+    </h:body>
+</html>
+

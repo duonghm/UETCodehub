@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition>
+            
+            <p:panelGrid columns="2">
+
+                <h:outputLabel for="lbl_sum_courseName" value="Course Name"/>
+                <h:outputText id="lbl_sum_courseName" value="#{coursesBean.selected.courseName}"/>
+
+                <h:outputLabel for="lbl_sum_instructor" value="Instructor"/>
+                <h:outputText id="lbl_sum_instructor" value="#{coursesBean.selected.createdUser.username}"/>
+
+                <h:outputLabel for="lbl_sum_semester" value="Semester"/>
+                <h:outputText id="lbl_sum_semester" value="#{coursesBean.selected.semester.semesterName}"/>
+
+                <h:outputLabel for="lbl_sum_description" value="Description"/>
+                <h:outputText id="lbl_sum_description" value="#{coursesBean.selected.description}"/>
+
+                <h:outputLabel for="lbl_sum_status" value="Status"/>
+                <h:outputText id="lbl_sum_status" value="#{coursesBean.selected.isActive}"/>
+
+            </p:panelGrid>
+
+        </ui:composition>
+    </h:body>
+</html>
+

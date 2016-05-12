@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 11, 2016 1:11:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="vn.edu.vnu.uet.fit.entity.Courseusersrole" table="courseusersrole" catalog="uetcodehub">
+        <id name="courseusersroleId" type="java.lang.Integer">
+            <column name="courseUsersRoleId" />
+            <generator class="identity"></generator>
+        </id>
+        <property name="courseusersroleName" type="string">
+            <column name="courseUsersRoleName" length="100" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
