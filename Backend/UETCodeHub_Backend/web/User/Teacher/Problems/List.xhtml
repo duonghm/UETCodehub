@@ -11,11 +11,14 @@
     <h:body>
         <ui:composition>
             <h:form id="frm">
-                <p:messages id="msg" showDetail="true" />                
+                <p:messages id="msg" showDetail="true" />   
+                <p:contextMenu for="tbl">
+                    <p:menuitem value="Upload Testcase" icon="ui-icon-list-ul" oncomplete="PF('wgUpload').show()" />
+                </p:contextMenu>                
                 <p:dataTable id="tbl" value="#{problemsBean.lst}" var="item" widgetVar="wgTbl"
                              paginator="true" rows="10" rowsPerPageTemplate="10,20,30"
                              rowKey="#{item.problemId}"
-                             selection="#{problemsBean.selected}"
+                             selection="#{problemsBean.selected}" selectionMode="single"
                              editable="true"                             
                              >
                     <!--Table header button-->
@@ -40,6 +43,7 @@
 
                     <p:column headerText="Problem Content">
                         <p:cellEditor>
+                            <f:facet name="input"><p:inputText value="#{item.content}"/></f:facet>
                             <f:facet name="output"><h:outputText value="#{item.content}"/></f:facet>
                         </p:cellEditor>
 
@@ -54,6 +58,8 @@
 
                     <p:column headerText="Tag values">
                         <p:cellEditor>
+                            <f:facet name="input"><p:inputText value="#{item.tagValues}"/></f:facet>
+                            <f:facet name="output"><h:outputText value="#{item.tagValues}"/></f:facet>
                         </p:cellEditor>
                     </p:column>
 

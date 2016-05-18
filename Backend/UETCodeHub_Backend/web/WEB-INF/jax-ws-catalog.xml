@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://codehub.now-ip.org:80/JudgeServer/TestcaseService?wsdl" uri="wsdl/codehub.now-ip.org_80/JudgeServer/TestcaseService.wsdl"/>
+    <system systemId="http://codehub.now-ip.org:80/JudgeServer/TestcaseService?xsd=1" uri="wsdl/codehub.now-ip.org_80/JudgeServer/TestcaseService.xsd_1.xsd"/>
+</catalog>
