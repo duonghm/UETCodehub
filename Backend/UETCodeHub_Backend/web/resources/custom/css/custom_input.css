@@ -1,0 +1,98 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 17, 2016, 1:08:50 PM
+    Author     : hmduong
+*/
+
+
+
+/* Custom icon color */
+.ui-icon{    
+    background-image: url("/UETCodeHub_Backend/faces/resources/custom/image/ui-icons_898989_256x240.png") !important;
+}
+
+.ui-state-highlight .ui-icon{
+    /*background-image: url("/UETCodeHub_Backend/faces/resources/custom/image/ui-icons_ffffff_256x240.png") !important;*/
+}
+
+/* Custom Button style */
+.ui-button{
+
+}
+
+.btn-blue{
+    border-radius: 3px !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid transparent !important;
+    background-color: #3c8dbc !important;
+    color: white !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    padding: 6px 12px !important;
+}
+
+.ui-state-highlight .ui-button{
+    /*background: none !important;*/
+}
+
+.ui-state-hover .ui-button{
+
+}
+
+/* Textbox */
+.ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield{
+    box-shadow: none !important;
+    width: 90% !important;
+    border-radius: 0 !important;
+    background: white !important;
+    margin: auto !important;
+}
+
+.ui-cell-editor-input{
+    text-align: center !important;
+}
+
+/* Select menu */
+.ui-selectonemenu{
+    width: 90% !important; 
+    background: white !important;
+}
+
+.ui-selectonemenu-trigger{
+    width: 25px !important;
+}
+
+/* Checkbox */
+.ui-chkbox-box{
+    background: white !important;
+}
+
+/* Message */
+.ui-messages-info{
+
+}
+
+.ui-messages-info-icon, .ui-messages-warn-icon, .ui-messages-error-icon, .ui-messages-fatal-icon, .ui-message-info-icon, .ui-message-warn-icon, .ui-message-error-icon, .ui-message-fatal-icon {
+    background: url("/UETCodeHub_Backend/faces/javax.faces.resource/messages/messages.png?ln=primefaces&v=5.0") no-repeat;
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+/**/
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+    text-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.ui-state-default{
+    background: white;
+}
+

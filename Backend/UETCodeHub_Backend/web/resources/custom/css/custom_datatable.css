@@ -1,0 +1,73 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 17, 2016, 7:07:19 AM
+    Author     : hmduong
+*/
+
+/* Datatable header color */
+.ui-widget-header{
+    background: none !important;
+}
+
+.ui-state-default{
+    background: none !important;
+}
+
+/* Datatable border */
+.ui-widget-header{
+    border: none !important;
+}
+.ui-datatable-tablewrapper{
+    border: none !important;
+}
+
+.ui-datatable thead th, .ui-datatable tbody td, .ui-datatable tfoot td {
+    /*border: none !important;*/
+    border: 1px solid #f4f4f4 !important;
+}
+
+.ui-widget-content{
+    border: none !important;
+}
+
+/* Odd line color */ 
+.ui-datatable-odd{
+
+}
+
+/* Row hover color */
+.ui-state-hover{
+    background: #e6f5ff !important;
+    opacity: 50 !important;
+    box-shadow: none !important;
+}
+
+/* Row select color */
+.ui-state-highlight{
+    /*background: #007acc !important;
+    color: white !important;*/
+    background: #ccebff !important;
+    color: black !important;
+    text-shadow: none !important;
+}
+
+/* Paginator */
+.ui-paginator .ui-paginator-page, .ui-paginator .ui-paginator-pages, .ui-paginator .ui-paginator-next, .ui-paginator .ui-paginator-last, .ui-paginator .ui-paginator-first, .ui-paginator .ui-paginator-prev, .ui-paginator .ui-paginator-current{
+    /*margin: 0 !important; 
+    border-radius: 0 !important;*/
+    padding: 6px 12px !important;
+}
+
+.ui-paginator-page{
+    border: 1px solid #ddd !important;
+    margin: 0 !important;    
+}
+
+.ui-state-active{
+    background: #357ca5 !important;
+    color: white !important;
+}

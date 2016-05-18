@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition>   
+            <h:form id="frm">
+                <p:messages id="msg" showDetail="true" />
+                <p:dataTable id="tbl" value="#{examsBean.lst}" var="item"
+                             paginator="true" rows="10" rowsPerPageTemplate="10,20,30"                                                                                       
+                             >
+                    <!--Table header button-->
+                    <f:facet name="header">
+                        <div style="float: left">
+                            <p:commandButton value="Create" oncomplete="PF('wgCreate').show()" />                            
+                            <p:commandButton value="Refresh" actionListener="#{examsBean.refresh()}" update=":frm:tbl, :frm:msg" />
+                        </div>
+                        <div style="clear: both"></div>
+                    </f:facet>
+
+                    <!--Table data column-->
+                    <p:column headerText="ID">
+                        <h:outputText value="#{item.examId}"/>
+                    </p:column>
+
+                    <p:column headerText="Name">
+                        <h:outputText value="#{item.examName}"/>
+                    </p:column>
+
+                    <p:column headerText="CourseId">
+                        <h:outputText value="#{item.courseId}"/>
+                    </p:column>
+
+                    <p:column headerText="avaiableFrom">
+                        <h:outputText value="#{item.availableFrom}"/>
+                    </p:column>
+
+                    <p:column headerText="avaiableTo">
+                        <h:outputText value="#{item.availableTo}"/>
+                    </p:column>
+
+                    <p:column headerText="duration">
+                        <h:outputText value="#{item.duration}"/>
+                    </p:column>
+
+                    <p:column headerText="isActive">
+                        <h:outputText value="#{item.isActive}"/>
+                    </p:column>
+
+                    <p:column headerText="isFinish">
+                        <h:outputText value="#{item.isFinish}"/>
+                    </p:column>
+                    <!--Edit button column-->
+                </p:dataTable>
+            </h:form>
+        </ui:composition>
+    </h:body>
+</html>
+

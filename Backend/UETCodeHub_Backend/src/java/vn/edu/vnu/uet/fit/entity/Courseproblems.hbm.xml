@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 11, 2016 1:11:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="vn.edu.vnu.uet.fit.entity.Courseproblems" table="courseproblems" catalog="uetcodehub">
+        <id name="courseProblemId" type="java.lang.Integer">
+            <column name="courseProblemId" />
+            <generator class="identity"></generator>
+        </id>
+        <many-to-one name="course" class="vn.edu.vnu.uet.fit.entity.Courses" lazy="false" fetch="join">
+            <column name="courseId" />
+        </many-to-one>
+        <many-to-one name="problem" class="vn.edu.vnu.uet.fit.entity.Problems" lazy="false" fetch="join">
+            <column name="problemId" />
+        </many-to-one>
+        <property name="hardLevel" type="java.lang.Integer">
+            <column name="hardLevel" />
+        </property>
+        <property name="scoreInCourse" type="int">
+            <column name="scoreInCourse" not-null="true" />
+        </property>
+        <property name="isActive" type="boolean">
+            <column name="isActive" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <title>UET Codehub | Log in</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+        <!-- Bootstrap 3.3.5 -->
+        <!--<link rel="stylesheet" href="/UETCodeHub_Backend/resources/bootstrap/css/bootstrap.min.css"/>-->
+        <f:facet name="last">
+            <h:outputStylesheet library="" name="bootstrap/css/bootstrap.min.css"/>
+        </f:facet>
+        <!-- Font Awesome -->        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
+        <!-- Theme style -->
+        <!--<link rel="stylesheet" href="/UETCodeHub_Backend/resources/dist/css/AdminLTE.min.css"/>-->
+        <f:facet name="last">
+            <h:outputStylesheet library="" name="dist/css/AdminLTE.min.css"/>
+        </f:facet>
+        <!-- iCheck -->
+        <link rel="stylesheet" href="/UETCodeHub_Backend/resources/plugins/iCheck/square/blue.css"/>
+    </h:head>
+    <h:body class="hold-transition login-page">
+        <h:form>
+            <div class="login-box">
+                <div class="login-logo">
+                    <a href="../../index2.html"><b>UET Codehub</b></a>
+                </div><!-- /.login-logo -->
+                <div class="login-box-body">
+                    <p class="login-box-msg">Sign in to start your session</p>
+                    <div class="form-group has-feedback">
+                        <h:inputText id="txtUsername" class="form-control" a:placeholder="Username" value="#{loginBean.user.username}" />
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>                        
+
+                    </div>
+                    <div class="form-group has-feedback">
+                        <h:inputSecret id="txtPassword" class="form-control" a:placeholder="Password" value="#{loginBean.user.password}" />  
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <h:messages id="msg" showDetail="true"/>
+                        </div><!-- /.col -->
+                        <div class="col-xs-4">
+                            <h:commandButton id="btnLogin" class="btn btn-primary btn-block btn-flat" action="#{loginBean.login}" value="Sign In"/> 
+                        </div><!-- /.col -->
+                    </div>
+                </div><!-- /.login-box-body -->
+            </div><!-- /.login-box -->
+        </h:form>
+    </h:body>
+</html>
+
