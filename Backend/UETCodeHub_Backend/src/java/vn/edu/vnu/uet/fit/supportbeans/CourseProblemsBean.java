@@ -5,6 +5,7 @@
  */
 package vn.edu.vnu.uet.fit.supportbeans;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -25,10 +26,13 @@ import org.primefaces.model.UploadedFile;
 import vn.edu.vnu.uet.fit.beans.CoursesBean;
 import vn.edu.vnu.uet.fit.beans.GenericBean;
 import vn.edu.vnu.uet.fit.beans.LoginBean;
+import vn.edu.vnu.uet.fit.beans.ProblemsBean;
 import vn.edu.vnu.uet.fit.entity.Courseproblems;
 import vn.edu.vnu.uet.fit.entity.Courses;
 import vn.edu.vnu.uet.fit.entity.Problems;
 import vn.edu.vnu.uet.fit.model.GenericModel;
+import vn.edu.vnu.uet.fit.service.TestcaseService;
+import vn.edu.vnu.uet.fit.service.TestcaseService_Service;
 import vn.edu.vnu.uet.fit.utils.JSFUtil;
 
 /**
@@ -154,5 +158,35 @@ public class CourseProblemsBean extends GenericBean<Courseproblems> implements S
                 Logger.getLogger(CourseProblemsBean.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+    
+    public void uploadTestcase2(FileUploadEvent evt) {
+        try {            
+            UploadedFile uploadFile = evt.getFile();
+            InputStream inputStream = uploadFile.getInputstream();
+            
+            int read = 0;
+            byte[] bytes = new byte[1024];
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            while ((read = inputStream.read(bytes)) != -1) {
+                out.write(bytes, 0, read);
+            }
+            inputStream.close();
+            out.flush();
+            byte[] data = out.toByteArray();
+            out.close();
+
+            TestcaseService service = new TestcaseService_Service().getTestcaseServicePort();
+            int uploadResult = service.uploadTestcase(getSelected().getProblem().getProblemId().toString(), data, uploadFile.getFileName());
+            if (uploadResult == 1) {
+                JSFUtil.addSuccessMessage(null, "Upload success", "");
+            }else{
+                JSFUtil.addErrorMessage(null, "Upload fail", "");
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(ProblemsBean.class.getName()).log(Level.SEVERE, null, ex);
+            JSFUtil.addErrorMessage(null, "Upload fail", ex.getMessage());
+        }
+
     }
 }

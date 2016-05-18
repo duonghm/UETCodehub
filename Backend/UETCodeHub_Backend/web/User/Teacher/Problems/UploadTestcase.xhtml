@@ -14,6 +14,7 @@
                     <p:messages id="msg" showDetail="true" autoUpdate="true"/>
                     <p:fileUpload mode="advanced" update=":frmUpload:msg, @this" 
                                   fileLimit="1" 
+                                  fileUploadListener="#{problemsBean.uploadTestcase2}" 
                                   />
                 </h:form>
             </p:dialog>
