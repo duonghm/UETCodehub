@@ -11,7 +11,7 @@
         <property name="courseName" type="string">
             <column name="courseName" length="200" not-null="true" />
         </property>        
-        <many-to-one name="createdUser" class="vn.edu.vnu.uet.fit.entity.Users">
+        <many-to-one name="createdUser" class="vn.edu.vnu.uet.fit.entity.Users" cascade="all">
             <column name="createdUserId"/>
         </many-to-one>
         <many-to-one name="semester" class="vn.edu.vnu.uet.fit.entity.Semesters" lazy="proxy" fetch="join" >
@@ -23,11 +23,11 @@
         <property name="isActive" type="boolean">
             <column name="isActive" not-null="true" />
         </property>
-        <set name="problems" table="Courseproblems" cascade="save-update" lazy="true">
+        <set name="problems" table="Courseproblems" cascade="all" lazy="true">
             <key column="courseId"/>                
             <many-to-many column="problemId" class="vn.edu.vnu.uet.fit.entity.Problems"/>
         </set>
-        <set name="members" table="Courseusers">
+        <set name="members" table="Courseusers" cascade="all" lazy="true">
             <key column="courseId"/>                
             <many-to-many column="userId" class="vn.edu.vnu.uet.fit.entity.Users"/>
         </set>

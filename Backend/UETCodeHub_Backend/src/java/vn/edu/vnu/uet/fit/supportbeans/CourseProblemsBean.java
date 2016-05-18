@@ -103,7 +103,7 @@ public class CourseProblemsBean extends GenericBean<Courseproblems> implements S
         try {
             Courseproblems obj = getObj();
             obj.setCourse(getCoursesBean().getSelected());
-            obj.getProblem().setUser(getLoginBean().getUser());
+            obj.getProblem().setUser(getLoginBean().getSearchUser());
             System.out.println("=== Problem Created user: " + obj.getProblem().getUser().getUsername());
             getProblemModel().create(obj.getProblem());
             super.create();

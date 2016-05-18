@@ -56,9 +56,9 @@ public class CoursesBean extends GenericBean<Courses> implements Serializable {
 
     @Override
     public void create() {
-        Users createdUser = JSFUtil.getLoginBean().getUser();
-        obj.setCreatedUser(createdUser);
-        super.create();
+        Users createdUser = JSFUtil.getLoginBean().getSearchUser();
+        obj.setCreatedUser(createdUser);        
+        super.create();        
         try {
             Courseusers courseusers = new Courseusers();
             courseusers.setCourse(obj);
@@ -80,7 +80,7 @@ public class CoursesBean extends GenericBean<Courses> implements Serializable {
     }
 
     public void cloneCourse() {
-        Users createdUser = JSFUtil.getLoginBean().getUser();
+        Users createdUser = JSFUtil.getLoginBean().getSearchUser();
         obj.setCreatedUser(createdUser);
         obj.getMembers().add(createdUser);        
         
@@ -97,6 +97,7 @@ public class CoursesBean extends GenericBean<Courses> implements Serializable {
             RequestContext.getCurrentInstance().execute("PF('wgClone').hide()");
             JSFUtil.addSuccessMessage(null, "Clone success", "Clone success from Course " + cloneFromCourse.getCourseId());            
         } catch (Exception ex) {
+            ex.printStackTrace();
             trans.rollback();
             JSFUtil.addErrorMessage(null, "Clone fail", ex.getMessage());
         }
