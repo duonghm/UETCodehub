@@ -12,7 +12,7 @@ public class Exams  implements java.io.Serializable {
 
      private Integer examId;
      private String examName;
-     private Integer courseId;
+     private Courses course;
      private Date availableFrom;
      private Date availableTo;
      private Integer duration;
@@ -28,9 +28,9 @@ public class Exams  implements java.io.Serializable {
         this.isActive = isActive;
         this.isFinish = isFinish;
     }
-    public Exams(String examName, Integer courseId, Date availableFrom, Date availableTo, Integer duration, boolean isActive, boolean isFinish) {
+    public Exams(String examName, Courses course, Date availableFrom, Date availableTo, Integer duration, boolean isActive, boolean isFinish) {
        this.examName = examName;
-       this.courseId = courseId;
+       this.course = course;
        this.availableFrom = availableFrom;
        this.availableTo = availableTo;
        this.duration = duration;
@@ -52,13 +52,15 @@ public class Exams  implements java.io.Serializable {
     public void setExamName(String examName) {
         this.examName = examName;
     }
-    public Integer getCourseId() {
-        return this.courseId;
+
+    public Courses getCourse() {
+        return course;
+    }
+
+    public void setCourse(Courses course) {
+        this.course = course;
     }
     
-    public void setCourseId(Integer courseId) {
-        this.courseId = courseId;
-    }
     public Date getAvailableFrom() {
         return this.availableFrom;
     }
@@ -94,9 +96,6 @@ public class Exams  implements java.io.Serializable {
     public void setIsFinish(boolean isFinish) {
         this.isFinish = isFinish;
     }
-
-
-
 
 }
 

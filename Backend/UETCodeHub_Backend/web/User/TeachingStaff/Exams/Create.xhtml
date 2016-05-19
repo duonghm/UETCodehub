@@ -23,14 +23,16 @@
                         <p:outputLabel for="txtExamname" value="Exam name"/>
                         <p:inputText id="txtExamname" value="#{examsBean.obj.examName}"/>
                         
-                        <p:outputLabel for="txtCourse" value="For course"/>
-                        <p:inputText id="txtCourse" value="#{examsBean.obj.courseId}"/>
+                        <p:outputLabel for="sltCourse" value="For course"/>
+                        <p:selectOneMenu id="sltCourse" value="#{examsBean.obj.course}" converter="courseConverter" filter="true" filterMatchMode="startsWith">
+                            <f:selectItems value="#{coursesBean.lst}" var="item" itemLabel="#{item.courseName}" itemValue="#{item}" />
+                        </p:selectOneMenu>                        
                         
                         <p:outputLabel for="cldFrom" value="From"/>
-                        <p:calendar id="cldFrom" value="#{examsBean.obj.availableFrom}"/>
+                        <p:calendar id="cldFrom" value="#{examsBean.obj.availableFrom}" pattern="MM/dd/yyyy HH:mm:ss"/>
                         
                         <p:outputLabel for="cldTo" value="To"/>
-                        <p:calendar id="cldTo" value="#{examsBean.obj.availableTo}"/>
+                        <p:calendar id="cldTo" value="#{examsBean.obj.availableTo}" pattern="MM/dd/yyyy HH:mm:ss"/>
                         
                         <!--Footer Button-->
                         <f:facet name="footer">

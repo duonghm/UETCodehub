@@ -11,7 +11,9 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import org.hibernate.Session;
+import vn.edu.vnu.uet.fit.entity.Courses;
 import vn.edu.vnu.uet.fit.entity.Exams;
 import vn.edu.vnu.uet.fit.model.GenericModel;
 import vn.edu.vnu.uet.fit.utils.HibernateUtil;
@@ -32,6 +34,11 @@ public class ExamBean extends GenericBean<Exams> implements Serializable {
         init(Exams.class);
     }
 
+    @PostConstruct
+    void init(){
+        obj.setCourse(new Courses());
+    }
+    
     @Override
     public String getEntityMsg(Exams obj) {
         return obj.getExamName();
@@ -56,4 +63,27 @@ public class ExamBean extends GenericBean<Exams> implements Serializable {
         System.out.println("=== Lst size: " + lst.size());
     }
 
+    public void active(Exams exam){
+        try {
+            exam.setIsActive(true);
+            getModel().update(exam);
+            JSFUtil.addSuccessMessage(null, "Active success", "Active exam: " + getEntityMsg(exam));
+        } catch (Exception ex) {
+            Logger.getLogger(ExamBean.class.getName()).log(Level.SEVERE, null, ex);
+            JSFUtil.addErrorMessage(null, "Active fail", ex.getMessage());
+        }
+    }
+    
+    public void deactive(Exams exam){
+        try {
+            exam.setIsActive(false);
+            getModel().update(exam);
+            JSFUtil.addSuccessMessage(null, "Deactive success", "Deactive exam: " + getEntityMsg(exam));
+        } catch (Exception ex) {
+            Logger.getLogger(ExamBean.class.getName()).log(Level.SEVERE, null, ex);
+            JSFUtil.addErrorMessage(null, "Deactive fail", ex.getMessage());
+        }
+        
+    }
+    
 }

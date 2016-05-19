@@ -11,18 +11,24 @@
     <h:body>
         <ui:composition>   
             <h:form id="frm">
-                <p:messages id="msg" showDetail="true" />
+                <p:messages id="msg" showDetail="true" />                
                 <p:dataTable id="tbl" value="#{examsBean.lst}" var="item"
-                             paginator="true" rows="10" rowsPerPageTemplate="10,20,30"                                                                                       
+                             paginator="true" rows="10" rowsPerPageTemplate="10,20,30"
+                             rowKey="#{item.examId}"
+                             selection="#{examsBean.selected}" selectionMode="single"
+                             editable="true"
                              >
                     <!--Table header button-->
                     <f:facet name="header">
                         <div style="float: left">
-                            <p:commandButton value="Create" oncomplete="PF('wgCreate').show()" />                            
-                            <p:commandButton value="Refresh" actionListener="#{examsBean.refresh()}" update=":frm:tbl, :frm:msg" />
+                            <p:commandButton value="Create" oncomplete="PF('wgCreate').show()" class="btn-blue" />                            
+                            <p:commandButton value="Refresh" actionListener="#{examsBean.refresh()}" update=":frm:tbl, :frm:msg" class="btn-blue" />
                         </div>
                         <div style="clear: both"></div>
                     </f:facet>
+
+                    <p:ajax event="rowEdit" listener="#{examsBean.onRowEdit}" update=":frm:msg"/>
+                    <p:ajax event="rowEditCancel" listener="#{examsBean.onRowCancel}" update=":frm:msg"/>
 
                     <!--Table data column-->
                     <p:column headerText="ID">
@@ -30,23 +36,48 @@
                     </p:column>
 
                     <p:column headerText="Name">
-                        <h:outputText value="#{item.examName}"/>
+                        <p:cellEditor>
+                            <f:facet name="input"><p:inputText value="#{item.examName}"/></f:facet>
+                            <f:facet name="output"><h:outputText value="#{item.examName}"/></f:facet>                            
+                        </p:cellEditor>
                     </p:column>
 
-                    <p:column headerText="CourseId">
-                        <h:outputText value="#{item.courseId}"/>
+                    <p:column headerText="Course">
+                        <h:outputText value="#{item.course.courseName}"/>                        
                     </p:column>
 
                     <p:column headerText="avaiableFrom">
-                        <h:outputText value="#{item.availableFrom}"/>
+                        <p:cellEditor>
+                            <f:facet name="input">
+                                <p:calendar value="#{item.availableFrom}" pattern="MM/dd/yyyy HH:mm:ss"/>
+                            </f:facet>
+                            <f:facet name="output">
+                                <h:outputText value="#{item.availableFrom}">
+<!--                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />-->
+                                </h:outputText>
+                            </f:facet>
+                        </p:cellEditor>                        
                     </p:column>
 
                     <p:column headerText="avaiableTo">
-                        <h:outputText value="#{item.availableTo}"/>
+                        <p:cellEditor>
+                            <f:facet name="input">
+                                <p:calendar value="#{item.availableTo}" pattern="MM/dd/yyyy HH:mm:ss"/>
+                            </f:facet>
+                            <f:facet name="output">
+                                <h:outputText value="#{item.availableTo}">
+                                    <!--<f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />-->
+                                </h:outputText>
+                            </f:facet>
+                        </p:cellEditor>                        
                     </p:column>
 
                     <p:column headerText="duration">
-                        <h:outputText value="#{item.duration}"/>
+                        <p:cellEditor>
+                            <f:facet name="input"><p:inputText value="#{item.duration}"/></f:facet>
+                            <f:facet name="output"><h:outputText value="#{item.duration}"/></f:facet>
+                        </p:cellEditor>
+
                     </p:column>
 
                     <p:column headerText="isActive">
@@ -57,6 +88,13 @@
                         <h:outputText value="#{item.isFinish}"/>
                     </p:column>
                     <!--Edit button column-->
+                    <p:column style="width: 50px">
+                        <p:rowEditor/>                    
+                    </p:column>
+                    <p:column>
+                        <p:commandButton icon="ui-icon-close" action="#{examsBean.deactive(item)}" update=":frm:tbl :frm:msg" rendered="#{item.isActive}"/>
+                        <p:commandButton icon="ui-icon-check" action="#{examsBean.active(item)}" update=":frm:tbl :frm:msg" rendered="#{not item.isActive}"/>
+                    </p:column>
                 </p:dataTable>
             </h:form>
         </ui:composition>
