@@ -22,5 +22,8 @@
     <mapping resource="vn/edu/vnu/uet/fit/entity/Examproblems.hbm.xml"/>
     <mapping resource="vn/edu/vnu/uet/fit/entity/Courseusers.hbm.xml"/>
     <mapping resource="vn/edu/vnu/uet/fit/entity/Courseusersrole.hbm.xml"/>
+    <mapping resource="vn/edu/vnu/uet/fit/entity/report/course/StudentDetailReportByCourse.hbm.xml"/>
+    <mapping resource="vn/edu/vnu/uet/fit/entity/report/course/StudentReportByCourse.hbm.xml"/>
+    <mapping resource="vn/edu/vnu/uet/fit/entity/report/course/CourseReportOverall.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

@@ -56,6 +56,11 @@
                                 <i class="fa fa-book"></i> <span>Exams</span>
                             </h:outputLink>
                         </li>
+                        <li>                            
+                            <h:outputLink  value="/UETCodeHub_Backend/faces/Reports/Reports.xhtml" rendered="#{loginBean.searchUser.role.roleId ge 1}">
+                                <i class="fa fa-book"></i> <span>Reports</span>
+                            </h:outputLink>
+                        </li>
                     </ul>
                 </section>
                 <!-- /.sidebar -->

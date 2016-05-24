@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="vn.edu.vnu.uet.fit.entity.report.course.CourseReportOverall">      
+    <id name="reportId" type="java.lang.Integer">
+      <column name="reportId"/>
+      <generator class="identity"/>
+    </id>    
+    <many-to-one name="course" class="vn.edu.vnu.uet.fit.entity.Courses" lazy="false">
+        <column name="courseId" />
+    </many-to-one>
+    <property name="numberOfStudent" type="java.lang.Integer">
+      <column name="numberOfStudent"/>
+    </property>
+    <property name="numberOfProblem" type="java.lang.Integer">
+      <column name="numberOfProblem"/>
+    </property>
+    <property name="averageScore" type="java.lang.Float">
+      <column name="averageScore"/>
+    </property>    
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../Template/Template.xhtml">
+
+            <ui:define name="title">
+                UET Codehub
+            </ui:define>
+
+            <ui:define name="pageName">
+                Report
+            </ui:define>
+
+            <ui:define name="directoryDir">
+                
+            </ui:define>
+
+            <ui:define name="content">
+                <p:tabView id="reportTabs">
+                    <p:tab title="Course">
+                        <ui:include src="ReportByCourses.xhtml"/>
+                    </p:tab>
+                    <p:tab title="Problem">
+                        <ui:include src="ReportByProblems.xhtml"/>
+                    </p:tab>
+                </p:tabView>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

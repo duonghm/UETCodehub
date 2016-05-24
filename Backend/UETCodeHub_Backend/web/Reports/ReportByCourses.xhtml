@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition>
+
+            <p:dataTable value="#{courseReportBean.lst}" var="item" 
+                         paginator="true" rows="20" rowsPerPageTemplate="10,20,30">
+                <p:column style="width: 50px">
+                    <p:rowToggler />
+                </p:column>                
+                <p:column headerText="Course">
+                    <h:outputText value="#{item.course.courseName}"/>
+                </p:column> 
+                <p:column headerText="Semester">
+                    <h:outputText value="#{item.course.semester.semesterName}"/>
+                </p:column> 
+                <p:column headerText="Problems">
+                    <h:outputText value="#{item.numberOfProblem}"/>
+                </p:column>                
+                <p:column headerText="Students">
+                    <h:outputText value="#{item.numberOfStudent}"/>
+                </p:column>
+                <p:column headerText="Average Score">
+                    <h:outputText value="#{item.averageScore}"/>
+                </p:column>
+
+                <p:rowExpansion>
+
+                    <p:dataTable value="#{courseReportBean.getCourseReport(item.course.courseId)}" scrollable="true" scrollHeight="200" var="subItem">
+                        <p:column style="width: 50px">
+                            <p:rowToggler />
+                        </p:column>
+                        <p:column headerText="User">
+                            <h:outputText value="#{subItem.user.username}"/>
+                        </p:column> 
+                        <p:column headerText="Exercise">
+                            <h:outputText value="#{subItem.summitedExercise}"/>
+                        </p:column> 
+                        <p:column headerText="Score">
+                            <h:outputText value="#{subItem.courseScore}"/>
+                        </p:column> 
+                        
+                        <p:rowExpansion>
+                            <p:dataTable value="#{courseReportBean.getStudentInCourseReport(item.course.courseId, subItem.user.userId)}" scrollable="true" scrollHeight="100" var="doneExercise">
+                                <p:column headerText="Problem">
+                                    <h:outputText value="#{doneExercise.problemId}" />
+                                </p:column>
+                                <p:column headerText="Result">
+                                    <h:outputText value="#{doneExercise.submissionResult}" />
+                                </p:column>
+                                <p:column headerText="Score">
+                                    <h:outputText value="#{doneExercise.resultScore}" />
+                                </p:column>
+                            </p:dataTable>
+                        </p:rowExpansion>
+                    </p:dataTable>
+
+                </p:rowExpansion>
+            </p:dataTable>
+
+        </ui:composition>
+    </h:body>
+</html>
+

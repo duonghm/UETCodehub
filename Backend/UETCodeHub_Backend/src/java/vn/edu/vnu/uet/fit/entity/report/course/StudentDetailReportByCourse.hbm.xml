@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="vn.edu.vnu.uet.fit.entity.report.course.StudentDetailReportByCourse">
+    <id name="reportId" type="java.lang.Integer">
+      <column name="reportId"/>
+      <generator class="identity"/>
+    </id>
+    <property name="courseId" type="java.lang.Integer">
+      <column name="courseId"/>
+    </property>
+    <property name="userId" type="java.lang.Integer">
+      <column name="userId" not-null="true"/>
+    </property>
+    <property name="problemId" type="java.lang.Integer">
+      <column name="problemId" not-null="true"/>
+    </property>
+    <property name="submitId" type="java.lang.Integer">
+      <column name="submitId" not-null="true"/>
+    </property>
+    <property name="submissionResult" type="string">
+      <column name="result"/>
+    </property>
+    <property name="resultScore" type="java.lang.Integer">
+      <column name="resultScore"/>
+    </property>
+  </class>
+</hibernate-mapping>

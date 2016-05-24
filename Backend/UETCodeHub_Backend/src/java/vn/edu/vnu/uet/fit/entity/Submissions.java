@@ -11,10 +11,10 @@ public class Submissions  implements java.io.Serializable {
 
 
      private Integer submitId;
-     private int problemId;
-     private Integer examId;
-     private Integer courseId;
-     private int userId;
+     private Problems problem;
+     private Exams exam;
+     private Courses course;
+     private Users user;
      private Date submitTime;
      private String language;
      private String sourceCode;
@@ -27,17 +27,17 @@ public class Submissions  implements java.io.Serializable {
     }
 
 	
-    public Submissions(int problemId, int userId, Date submitTime, boolean isActive) {
-        this.problemId = problemId;
-        this.userId = userId;
+    public Submissions(Problems problem, Users user, Date submitTime, boolean isActive) {
+        this.problem = problem;
+        this.user = user;
         this.submitTime = submitTime;
         this.isActive = isActive;
     }
-    public Submissions(int problemId, Integer examId, Integer courseId, int userId, Date submitTime, String language, String sourceCode, Float runningTime, String result, Integer resultScore, boolean isActive) {
-       this.problemId = problemId;
-       this.examId = examId;
-       this.courseId = courseId;
-       this.userId = userId;
+    public Submissions(Problems problem, Exams exam, Courses course, Users user, Date submitTime, String language, String sourceCode, Float runningTime, String result, Integer resultScore, boolean isActive) {
+       this.problem = problem;
+       this.exam = exam;
+       this.course = course;
+       this.user = user;
        this.submitTime = submitTime;
        this.language = language;
        this.sourceCode = sourceCode;
@@ -54,34 +54,39 @@ public class Submissions  implements java.io.Serializable {
     public void setSubmitId(Integer submitId) {
         this.submitId = submitId;
     }
-    public int getProblemId() {
-        return this.problemId;
+
+    public Problems getProblem() {
+        return problem;
+    }
+
+    public void setProblem(Problems problem) {
+        this.problem = problem;
+    }
+
+    public Exams getExam() {
+        return exam;
+    }
+
+    public void setExam(Exams exam) {
+        this.exam = exam;
+    }
+
+    public Courses getCourse() {
+        return course;
+    }
+
+    public void setCourse(Courses course) {
+        this.course = course;
+    }
+
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
     }
     
-    public void setProblemId(int problemId) {
-        this.problemId = problemId;
-    }
-    public Integer getExamId() {
-        return this.examId;
-    }
-    
-    public void setExamId(Integer examId) {
-        this.examId = examId;
-    }
-    public Integer getCourseId() {
-        return this.courseId;
-    }
-    
-    public void setCourseId(Integer courseId) {
-        this.courseId = courseId;
-    }
-    public int getUserId() {
-        return this.userId;
-    }
-    
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
     public Date getSubmitTime() {
         return this.submitTime;
     }

@@ -7,19 +7,19 @@
         <id name="submitId" type="java.lang.Integer">
             <column name="submitId" />
             <generator class="identity"></generator>
-        </id>
-        <property name="problemId" type="int">
-            <column name="problemId" not-null="true" />
-        </property>
-        <property name="examId" type="java.lang.Integer">
+        </id>        
+        <many-to-one name="problem" class="vn.edu.vnu.uet.fit.entity.Problems">
+            <column name="problemId" not-null="true"/>
+        </many-to-one>        
+        <many-to-one name="exam" class="vn.edu.vnu.uet.fit.entity.Exams">
             <column name="examId" />
-        </property>
-        <property name="courseId" type="java.lang.Integer">
-            <column name="courseId" />
-        </property>
-        <property name="userId" type="int">
-            <column name="userId" not-null="true" />
-        </property>
+        </many-to-one>
+        <many-to-one name="course" class="vn.edu.vnu.uet.fit.entity.Courses">
+            <column name="courseId"/>
+        </many-to-one>
+        <many-to-one name="user" class="vn.edu.vnu.uet.fit.entity.Users">
+            <column name="userId" not-null="true"/>
+        </many-to-one>        
         <property name="submitTime" type="timestamp">
             <column name="submitTime" length="19" not-null="true" />
         </property>
